@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Symfony Concerts{% endblock %}
+
+{% block body %}
+<style>
+    .band{transition: 250ms ease;cursor: pointer;}
+    .band a{list-style: none;text-decoration: unset;}
+    .band:hover{transform: scale(1.02);}
+</style>
+
+<div class="col-md-6 offset-md-3 mt-5">
+  <h2>Liste des groupes</h2>
+  <div class="bg-light p-3 rounded">
+    {% for band in bands %}
+      <div class="p-3 my-2 band" style="background-color: #e3f2fd;"><a href="band/{{band.id}}">{{band.name}}</a></div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

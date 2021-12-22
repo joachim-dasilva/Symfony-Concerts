@@ -1,0 +1,33 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+}
+
+:root{
+    --color-primary: #9f75ff;
+    --color-light: #ddcfff;
+    --color-secondary: #5f9fff;
+}
+
+.sy-btn-secondary{
+    background-color: #5f9fff !important;
+    border: 1px solid #4b92fd;
+    color: white !important;
+}
+
+.sy-btn-outline-secondary{
+    border: 1px solid #4b92fd !important;
+    color: #4b92fd !important;
+}
+
+@font-face {
+    font-family: "Gadamer";
+    src: url("Gadamer.ttf") format("ttf"),
+    url("Gadamer.otf") format("otf")
+}
+
+.sy-font-title{
+    font-family: "Gadamer", 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
