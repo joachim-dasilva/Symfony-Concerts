@@ -46,6 +46,11 @@ class Concert
      */
     private $band;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
     public function __construct()
     {
         $this->organizer = new ArrayCollection();
@@ -124,6 +129,18 @@ class Concert
     public function setBand(?Band $band): self
     {
         $this->band = $band;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

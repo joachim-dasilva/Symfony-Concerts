@@ -1,16 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil - Symfony Concerts{% endblock %}
-
 {% block body %}
 
-<div class="col-md-6 offset-md-3 mt-5 rounded text-white bg-dark p-3">
   <h2>{{ band.name }}</h2>
   <hr class="bg-light">
   <h3>Liste des membres</h3>
   {% for member in band.members %}
   <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src="{{asset('images/bands/' ~ band.image)}}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ member.artistName }}</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -18,5 +15,4 @@
     </div>
   </div>
   {% endfor %}
-</div>
 {% endblock %}

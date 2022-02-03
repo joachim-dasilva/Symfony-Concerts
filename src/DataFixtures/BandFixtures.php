@@ -16,6 +16,7 @@ class BandFixtures extends Fixture implements DependentFixtureInterface
     {
         $band1 = new Band();
         $band1->setName('Band-1');
+        $band1->setImage('1.jpg');
 
         $band1->addMember($this->getReference(MemberFixtures::MEMBER1_REFERENCE));
 

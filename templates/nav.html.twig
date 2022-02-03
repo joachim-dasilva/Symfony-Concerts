@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">
-    <img src="../public/images/logo.png" width="60" height="60" class="d-inline-block align-center mx-3" alt="">
+  <a class="navbar-brand" href="{{ path('home') }}">
+    <img src="{{asset('images/logo.png')}}" width="60" height="60" class="d-inline-block align-center mx-3" alt="">
     <span class="sy-font-title" style="font-weight: 600;font-size: 26px;">Symfony Concerts</span>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,13 +10,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{path('home')}}">Accueil <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="bands">Groupes</a>
+        <a class="nav-link" href="{{path('bands_list')}}">Groupes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('archives')}}">Archives</a>
       </li>
     </ul>
-    <button class="btn sy-btn-secondary mx-2" type="submit">S'enregistrer</button>
-    <button class="btn sy-btn-outline-secondary mx-2" type="submit">Se connecter</button>
+    <a class="btn sy-btn-secondary mx-2" href="{{path('app_register')}}">S'enregistrer</a>
+    <a class="btn sy-btn-outline-secondary mx-2" href="{{path('app_login')}}">Se connecter</a>
   </div>
 </nav>

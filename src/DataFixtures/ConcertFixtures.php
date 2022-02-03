@@ -15,6 +15,7 @@ class ConcertFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $concert1 = new Concert();
+        $concert1->setName('Tournée 1');
         $concert1->setDateStart(\DateTime::createFromFormat('d/m/Y H:i:s', '14/02/2022 14:00:00'));
         $concert1->setDateEnd(\DateTime::createFromFormat('d/m/Y H:i:s', '14/02/2022 16:00:00'));
         $concert1->setBand($this->getReference(BandFixtures::BAND1_REFERENCE));

@@ -1,6 +1,39 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Accueil - Symfony Concerts{% endblock %}
-
 {% block body %}
+    <h1>Liste des concerts</h1>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Groupe</th>
+        <th scope="col">Tournée</th>
+        <th scope="col">Date</th>
+        <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for concert in concerts %}
+            <tr>
+                <td>
+                    <div class="img-cover" style="width: 80px;height:80px;">
+                        <img src="{{asset('images/bands/'~concert.band.image)}}">
+                    </div>
+                </td>
+                <td>{{concert.band.name}}</td>
+                <td>{{concert.name}}</td>
+                <td>{{concert.dateStart|date("d/m/Y")}}</td>
+                <td>
+                    <div class="dropdown show">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item bg-primary text-white" href="{{path('concert_edit', {id: concert.id})}}">Modifier</a>
+                            <a class="dropdown-item bg-danger text-white" onclick="showConfirmModal(`Suppression`, `Voulez-vous confirmer la suppression de {{ concert.name }} ?`, `{{ path('concert_delete', {id: concert.id})}}`, 'btn-danger');">Supprimer</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <a href="{{path('concert_create', {id: 2})}}">Créer un nouveau concert</a>
 {% endblock %}

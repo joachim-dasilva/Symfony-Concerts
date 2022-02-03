@@ -19,6 +19,14 @@ class ConcertRepository extends ServiceEntityRepository
         parent::__construct($registry, Concert::class);
     }
 
+    public function findAllPast(){
+        return $this->createQueryBuilder('c')
+                ->andWhere('c.dateEnd < :now')
+                ->setParameter('now', time())
+                ->getQuery()
+                ->getResult();
+    }
+
     // /**
     //  * @return Concert[] Returns an array of Concert objects
     //  */
