@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Concert;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,10 +20,13 @@ class ConcertRepository extends ServiceEntityRepository
         parent::__construct($registry, Concert::class);
     }
 
+    /**
+     * @return Concert[] Returns an array of Concert objects where dateEnd < NOW()
+     */
     public function findAllPast(){
         return $this->createQueryBuilder('c')
                 ->andWhere('c.dateEnd < :now')
-                ->setParameter('now', time())
+                ->setParameter('now', new DateTime())
                 ->getQuery()
                 ->getResult();
     }

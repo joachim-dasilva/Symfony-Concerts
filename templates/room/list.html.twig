@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Liste des salles</h1>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Salle</th>
+        <th scope="col">Adresse</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+            <tr>
+                <td>
+                    <div class="img-cover" style="width: 80px;height:80px;">
+                        <img src="{{asset('images/rooms/'~room.image)}}">
+                    </div>
+                </td>
+                <td>{{room.name}}</td>
+                <td>{{room.address}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

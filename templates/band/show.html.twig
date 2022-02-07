@@ -5,14 +5,19 @@
   <h2>{{ band.name }}</h2>
   <hr class="bg-light">
   <h3>Liste des membres</h3>
-  {% for member in band.members %}
-  <div class="card" style="width: 18rem;">
-    <img src="{{asset('images/bands/' ~ band.image)}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{ member.artistName }}</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div class="container">
+    <div class="row">
+      {% for member in band.members %}
+      <div class="col">
+        <div class="card my-2" style="width: 18rem;">
+          <img src="{{asset('images/members/' ~ member.image)}}" class="card-img-top" alt="..." style="height: 300px;object-fit:cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ member.artistName }}</h5>
+            <p class="card-text">{{member.firstName}} {{member.lastName}} née le {{member.birthDate|date("d/m/Y")}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
-  {% endfor %}
 {% endblock %}

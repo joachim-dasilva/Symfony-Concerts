@@ -35,6 +35,11 @@ class Room
      */
     private $concerts;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
     public function __construct()
     {
         $this->concerts = new ArrayCollection();
@@ -95,6 +100,18 @@ class Room
                 $concert->setRoom(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
