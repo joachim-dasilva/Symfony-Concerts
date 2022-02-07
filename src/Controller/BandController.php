@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\BandRepository;
+use App\Repository\ConcertRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,12 +26,13 @@ class BandController extends AbstractController
     /**
      * @Route("/band/{id}", name="band_show")
      */
-    public function band_show(BandRepository $bandRepository, int $id): Response
+    public function band_show(BandRepository $bandRepository, ConcertRepository $concertRepository, int $id): Response
     {
         return $this->render('band/show.html.twig', [
             'controller_name' => 'BandController',
             'page_title' => 'Groupe',
-            'band' => $bandRepository->find($id ?? 1)
+            'band' => $bandRepository->find($id ?? 1),
+            'concertsFuture' => $concertRepository->findAllFutureByBand($id ?? 1)
         ]);
     }
 }

@@ -21,14 +21,42 @@ class ConcertRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return Concert[] Returns an array of Concert objects where dateEnd > NOW()
+     */
+    public function findAllFuture()
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.dateEnd > :now')
+            ->setParameter('now', new DateTime())
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
      * @return Concert[] Returns an array of Concert objects where dateEnd < NOW()
      */
-    public function findAllPast(){
+    public function findAllPast()
+    {
         return $this->createQueryBuilder('c')
-                ->andWhere('c.dateEnd < :now')
-                ->setParameter('now', new DateTime())
-                ->getQuery()
-                ->getResult();
+            ->andWhere('c.dateEnd < :now')
+            ->setParameter('now', new DateTime())
+            ->getQuery()
+            ->getResult();
+    }
+
+        /**
+     * @param id band's id
+     * @return Concert[] Returns an array of Concert objects where dateEnd > NOW()
+     */
+    public function findAllFutureByBand(int $id)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.dateEnd > :now')
+            ->andWhere('c.band = :band')
+            ->setParameter('now', new DateTime())
+            ->setParameter('band', $id)
+            ->getQuery()
+            ->getResult();
     }
 
     // /**

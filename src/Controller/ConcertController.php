@@ -21,7 +21,7 @@ class ConcertController extends AbstractController
         return $this->render('home.html.twig', [
             'controller_name' => 'ConcertController',
             'page_title' => 'Accueil',
-            'concerts' => $concertRepository->findAll()
+            'concerts' => $concertRepository->findAllFuture()
         ]);
     }
 
